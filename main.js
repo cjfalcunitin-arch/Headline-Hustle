@@ -1,3 +1,6 @@
+import { showLoading } from "/Game/loading.js";
+import { showLobby } from "/Game/lobby.js";
+import EventBus from "/Game/event.js";
 
 /* ===== GLOBAL FONT ===== */
 const fontLink = document.createElement("link");
@@ -15,13 +18,30 @@ document.head.appendChild(globalStyle);
 /* ===== GLOBAL NO SCROLL ===== */
 document.documentElement.style.overflow = "hidden";
 document.body.style.overflow = "hidden";
+
 /* ===== APP ROOT ===== */
 const app = document.createElement("div");
 app.id = "app";
-app.textContent = 'Welcome to World'
 document.body.appendChild(app);
 
 /* ===== CLEAR SCREEN ===== */
 function clearScreen(container) {
   container.innerHTML = '';
 }
+
+/* ===== START APP ===== */
+function startApp(container = app) {
+  clearScreen(container);
+
+  // listen for loading complete event
+  EventBus.on("loadingComplete", () => {
+    clearScreen(container);
+    showLobby(container);
+  });
+
+  // start loading
+  showLoading(container);
+}
+
+/* ===== EXECUTE ===== */
+startApp();
