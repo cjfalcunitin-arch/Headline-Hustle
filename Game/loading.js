@@ -30,7 +30,7 @@ export function showLoading(container) {
     if (count <= 0) {
       counter.textContent = "0";
       clearInterval(interval);
-      EventBus.emit("loadingComplete"); // 🔥 emit event instead of callback
+      EventBus.emit("loadingComplete"); 
       return;
     }
 

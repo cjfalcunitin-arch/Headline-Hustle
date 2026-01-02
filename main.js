@@ -1,4 +1,3 @@
-import { showLoading } from "./Game/loading.js";
 import { showLobby } from "./Game/lobby.js";
 import EventBus from "./Game/event.js";
 
@@ -26,26 +25,23 @@ document.body.appendChild(app);
 
 const debug = true;
 
-/* ===== CLEAR SCREEN ===== */
 function clearScreen(container) {
   container.innerHTML = '';
 }
 
-/* ===== START APP ===== */
 function startApp(container = app) {
-  if(debug) {
-   clearScreen(container);
-   showLobby(container);
-  }
-  // listen for loading complete event
-  else {EventBus.on("loadingComplete", () => {
+  if (debug) {
     clearScreen(container);
     showLobby(container);
-  });
+  } else {
+    EventBus.on("loadingComplete", () => {
+      clearScreen(container);
+      showLobby(container);
+    });
 
-  // start loading
-  showLoading(container);
-}}
+    // For a loading state if needed
+    // showLoading(container);
+  }
+}
 
-/* ===== EXECUTE ===== */
 startApp();
