@@ -1,4 +1,4 @@
-import EventBus from "./Game/event.js";
+import EventBus from "./event.js";
 
 export function showLoading(container) {
   container.innerHTML = '';
