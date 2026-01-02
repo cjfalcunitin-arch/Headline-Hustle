@@ -24,6 +24,8 @@ const app = document.createElement("div");
 app.id = "app";
 document.body.appendChild(app);
 
+const debug = true;
+
 /* ===== CLEAR SCREEN ===== */
 function clearScreen(container) {
   container.innerHTML = '';
@@ -31,17 +33,19 @@ function clearScreen(container) {
 
 /* ===== START APP ===== */
 function startApp(container = app) {
-  clearScreen(container);
-
+  if(debug) {
+   clearScreen(container);
+   showLobby(container);
+  }
   // listen for loading complete event
-  EventBus.on("loadingComplete", () => {
+  else {EventBus.on("loadingComplete", () => {
     clearScreen(container);
     showLobby(container);
   });
 
   // start loading
   showLoading(container);
-}
+}}
 
 /* ===== EXECUTE ===== */
 startApp();

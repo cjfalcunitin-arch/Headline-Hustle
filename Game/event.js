@@ -1,4 +1,4 @@
-// eventbus.js
+// event.js
 const EventBus = {
   events: {},
 
