@@ -1,6 +1,6 @@
-import { showLoading } from "/Game/loading.js";
-import { showLobby } from "/Game/lobby.js";
-import EventBus from "/Game/event.js";
+import { showLoading } from "./Game/loading.js";
+import { showLobby } from "./Game/lobby.js";
+import EventBus from "./Game/event.js";
 
 /* ===== GLOBAL FONT ===== */
 const fontLink = document.createElement("link");
